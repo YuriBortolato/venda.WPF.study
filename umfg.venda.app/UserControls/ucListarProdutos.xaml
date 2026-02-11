@@ -6,12 +6,11 @@
              xmlns:local="clr-namespace:umfg.venda.app.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#ECF8F1">
-        <Button
-                Style="{DynamicResource MaterialDesignFlatAccentButton}"
-                Content="TESTE"
-                Width="100"
-                Height="50"/>
-
+    <Grid Background="#ECF0F1">
+        <Button 
+            Style="{DynamicResource MaterialDesignFlatAccentButton}"
+            Content="TESTE" 
+            Width="100"
+            Height="50"/>
     </Grid>
 </UserControl>
