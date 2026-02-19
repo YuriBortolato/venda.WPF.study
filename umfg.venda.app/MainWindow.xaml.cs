@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using umfg.venda.app.ViewModels;
 
 namespace umfg.venda.app
 {
@@ -19,6 +20,7 @@ namespace umfg.venda.app
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainWindowViewModel();
         }
     }
 }

@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:umfg.venda.app"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowState="Maximized" Height="720" Width="1080">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="25 0 0 0">
+            <TextBlock Text="{Binding Titulo}" FontSize="28" FontWeight="SemiBold"
+                       FontFamily="Trebuchet MS" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <Frame Grid.Row="1" 
+               Content="{Binding UserControl}"
+               NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
