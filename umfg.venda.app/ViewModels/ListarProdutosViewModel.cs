@@ -39,7 +39,7 @@ namespace umfg.venda.app.ViewModels
             Produtos.Add(new ProdutoModel()
             {
                 Imagem = new BitmapImage(
-                    new Uri(@"..\net-8.0-windows\Images\batata.png", UriKind.Relative)),
+                    new Uri(@"..\net8.0-windows\Images\batata.png", UriKind.Relative)),
                 Descricao = "Batata Frita 300gr",
                 Referencia = "0001",
                 Valor = 10.90m,
@@ -48,7 +48,7 @@ namespace umfg.venda.app.ViewModels
             Produtos.Add(new ProdutoModel()
             {
                 Imagem = new BitmapImage(
-                    new Uri(@"..\net-8.0-windows\Images\combo.png", UriKind.Relative)),
+                    new Uri(@"..\net8.0-windows\Images\combo.png", UriKind.Relative)),
                 Descricao = "Combo Big Mac + Batata 300gr + Refil 500ML",
                 Referencia = "0002",
                 Valor = 49.90m,
@@ -57,7 +57,7 @@ namespace umfg.venda.app.ViewModels
             Produtos.Add(new ProdutoModel()
             {
                 Imagem = new BitmapImage(
-                    new Uri(@"..\net-8.0-windows\Images\lanche.png", UriKind.Relative)),
+                    new Uri(@"..\net8.0-windows\Images\lanche.png", UriKind.Relative)),
                 Descricao = "Big Mac 350gr",
                 Referencia = "0003",
                 Valor = 25.90m,
@@ -66,9 +66,9 @@ namespace umfg.venda.app.ViewModels
             Produtos.Add(new ProdutoModel()
             {
                 Imagem = new BitmapImage(
-                    new Uri(@"..\net-8.0-windows\Images\refrigerante.png", UriKind.Relative)),
+                    new Uri(@"..\net8.0-windows\Images\refrigerante.png", UriKind.Relative)),
                 Descricao = "Regrigerante Refil 500ml",
-                Referencia = "000                         4",
+                Referencia = "0004",
                 Valor = 10.90m,
             });
         }
