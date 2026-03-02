@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using umfg.venda.app.Interfaces;
 
 namespace umfg.venda.app.Abstracts
@@ -18,6 +19,9 @@ namespace umfg.venda.app.Abstracts
             get => _titulo;
             set => SetField(ref _titulo, value);
         }
+
+        public UserControl UserControl { get; protected set; }
+        public IObserver MainWindow { get; protected set; }
 
         protected AbstractViewModel(string titulo)
         {

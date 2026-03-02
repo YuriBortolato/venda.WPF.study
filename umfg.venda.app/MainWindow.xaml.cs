@@ -22,11 +22,7 @@ namespace umfg.venda.app
         public MainWindow()
         {
             InitializeComponent();
-
-            var viewModel = new MainWindowViewModel();
-            viewModel.UserControl = new ucListarProdutos();
-
-            DataContext = viewModel;
+            DataContext = new MainWindowViewModel();
         }
     }
 }

@@ -17,8 +17,23 @@
                        FontFamily="Trebuchet MS" VerticalAlignment="Center"/>
         </StackPanel>
 
+        <Button Grid.Row="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Height="250"
+                Width="250"
+                Content="_Iniciar"
+                FontSize="30"
+                FontWeight="SemiBold"
+                CommandParameter="{Binding}"
+                Command="{Binding ListarProdutos, UpdateSourceTrigger=PropertyChanged}"                        
+                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                Margin="50 0 0 0 "
+                Foreground="White"/>
+        
         <Frame Grid.Row="1" 
                Content="{Binding UserControl}"
-               NavigationUIVisibility="Hidden"/>
+               NavigationUIVisibility="Hidden">
+        </Frame>
     </Grid>
 </Window>

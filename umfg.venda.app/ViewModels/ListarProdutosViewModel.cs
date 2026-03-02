@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using umfg.venda.app.Abstracts;
+using umfg.venda.app.Interfaces;
 using umfg.venda.app.Models;
 
 namespace umfg.venda.app.ViewModels
@@ -27,8 +29,12 @@ namespace umfg.venda.app.ViewModels
             set => SetField(ref _produtos, value);
         }
 
-        public ListarProdutosViewModel() : base("Produtos")
+        public ListarProdutosViewModel(IObserver observer, UserControl userControl) : base("Produtos")
         {
+            UserControl = userControl;
+            MainWindow = observer;
+
+            Add(observer);
             CarregarProdutos();
         }
 
