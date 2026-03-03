@@ -46,6 +46,7 @@ namespace umfg.venda.app.Commands
 
             vm.Pedido.Produtos.Add(vm.ProdutoSelecionado); //adicionar o produto selecionado no pedido
             vm.Pedido.Total = vm.Pedido.Produtos.Sum(x => x.Valor); //atualizar o sub-total do pedido
+            vm.RaiseCanExecuteChanged();
         }
     }
 }

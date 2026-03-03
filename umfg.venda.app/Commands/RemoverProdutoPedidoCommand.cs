@@ -37,14 +37,24 @@ namespace umfg.venda.app.Commands
 
             //testa se o item selecionado pelo usuário consta na lista de itens do pedido
             //utilizando a passagem instrução lambda no método Any()
-            if (!m.Pedido.Produtos.Any(x => x.Id == vm.ProdutoSelecionado.Id))
+            if (!vm.Pedido.Produtos.Any(x => x.Id == vm.ProdutoSelecionado.Id))
             {
                 MessageBox.Show($"{vm.ProdutoSelecionado.Descricao} não foi encontrado no carrinho!");
                 return;
             }
 
+            var result = MessageBox
+                .Show("Deseja realmente remover este item no carrinho?",
+                            "Confirmar produto", MessageBoxButton.YesNo);
+
+            if (!MessageBoxResult.Yes.Equals(result))
+            {
+                return;
+            }
+
             vm.Pedido.Produtos.Remove(vm.ProdutoSelecionado);
             vm.Pedido.Total = vm.Pedido.Produtos.Sum(x => x.Valor);
+            vm.RaiseCanExecuteChanged();
         }
     }
 }

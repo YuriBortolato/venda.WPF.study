@@ -50,6 +50,13 @@ namespace umfg.venda.app.ViewModels
             CarregarProdutos();
         }
 
+        public void RaiseCanExecuteChanged()
+        {
+            Adicionar.RaiseCanExecuteChanged();
+            Remover.RaiseCanExecuteChanged();
+            //Receber.RaiseCanExecuteChanged();
+        }
+
         private void CarregarProdutos()
         {
             Produtos.Clear();

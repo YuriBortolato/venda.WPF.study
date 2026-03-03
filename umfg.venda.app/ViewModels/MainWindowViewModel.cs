@@ -30,6 +30,9 @@ namespace umfg.venda.app.ViewModels
         {
             if (subject is ListarProdutosViewModel)
                 UserControl = (subject as ListarProdutosViewModel).UserControl;
+
+            if (subject is ReceberPedidoViewModel)
+                UserControl = (subject as ReceberPedidoViewModel).UserControl;
         }
     }
 }

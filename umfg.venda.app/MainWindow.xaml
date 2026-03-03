@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:umfg.venda.app"
         mc:Ignorable="d"        
         WindowState="Maximized" Height="720" Width="1080">
-    <Grid>
+    <Grid Background="#ECF0F1">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
