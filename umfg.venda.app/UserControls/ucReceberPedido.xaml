@@ -61,6 +61,49 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="300">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Text="{Binding Referencia}"
+                                            FontWeight="SemiBold"
+                                            FontSize="24"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"/>
+                                        <TextBlock
+                                            Text="{Binding Descricao}"
+                                            FontWeight="SemiBold"
+                                            FontSize="24"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock
+                                            Text="R$"
+                                            FontWeight="ExtraBold"
+                                            FontSize="24"
+                                            VerticalAlignment="Center"/>
+                                        <TextBlock
+                                            Text="{Binding Valor}"
+                                            FontWeight="ExtraBold"
+                                            FontSize="24"
+                                            VerticalAlignment="Center"
+                                            TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
