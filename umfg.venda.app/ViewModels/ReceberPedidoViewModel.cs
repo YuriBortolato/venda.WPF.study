@@ -13,6 +13,34 @@ namespace umfg.venda.app.ViewModels
     internal sealed class ReceberPedidoViewModel : AbstractViewModel
     {
         private PedidoModel _pedido = new();
+        private long _numeroCartao = 0;
+        private long _cvv = 0;
+        private DateTime _dataValidade = DateTime.MinValue;
+        private string _nomeCartao = string.Empty;
+
+        public long NumeroCartao 
+        {
+            get => _numeroCartao;
+            set => SetField(ref _numeroCartao, value);
+        }
+
+        public long CVV
+        {
+            get => _cvv;
+            set => SetField(ref _cvv, value);
+        }
+
+        public DateTime DataValidade
+        {
+            get => _dataValidade;
+            set => SetField(ref _dataValidade, value);
+        }
+
+        public string NomeCartao
+        {
+            get => _nomeCartao;
+            set => SetField(ref _nomeCartao, value);
+        }
 
         public PedidoModel Pedido
         {
