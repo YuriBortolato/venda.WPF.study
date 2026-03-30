@@ -18,7 +18,9 @@
                 <ColumnDefinition MinWidth="500" MaxWidth="500"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="0"
+                        Orientation="Horizontal">
                 <DataGrid ItemsSource="{Binding Pedido.Produtos}"
                           HeadersVisibility="None"
                           AutoGenerateColumns="False"
@@ -85,8 +87,8 @@
                 </DataGrid>
             </StackPanel>
 
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0,20,20,0">
-                <ComboBox FontSize="24" FontWeight="SemiBold" SelectedIndex="0" Width="480" HorizontalAlignment="Left" Margin="0,0,0,10">
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" Margin="0,15,20,0">
+                <ComboBox FontSize="24" FontWeight="SemiBold" SelectedIndex="0" Width="500" Margin="0,0,0,10">
                     <ComboBoxItem Content="Selecione um Cartão"/>
                     <ComboBoxItem Content="Cartão de Crédito"/>
                     <ComboBoxItem Content="Cartão de Débito"/>
@@ -102,19 +104,17 @@
                 <DatePicker SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="24" FontWeight="SemiBold" Height="40" Margin="0,0,0,10"/>
 
                 <TextBlock Text="Nome no Cartão" FontSize="24" FontWeight="SemiBold"/>
-                <TextBox Text="{Binding NomeCartao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="24" FontWeight="SemiBold"/>
-            </StackPanel>
+                <TextBox Text="{Binding NomeCartao, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="24" FontWeight="SemiBold" Margin="0,0,0,20"/>
 
-            <Button Grid.Column="1" 
-                    Content="Receber Pagamento" 
-                    Command="{Binding FinalizarCommand}"
-                    FontSize="24" 
-                    FontWeight="Bold" 
-                    Background="#27ae60" 
-                    Foreground="White" 
-                    BorderThickness="0" 
-                    Cursor="Hand"
-                    Margin="0,628,25,10"/>
+                <Button Content="Receber via Command" 
+                        Command="{Binding FinalizarCommand}" 
+                        CommandParameter="{Binding}"
+                        FontSize="24" 
+                        FontWeight="Bold" 
+                        Background="#27ae60" 
+                        Foreground="White" 
+                        Padding="0" />
+            </StackPanel>
         </Grid>
     </Viewbox>
 </UserControl>
