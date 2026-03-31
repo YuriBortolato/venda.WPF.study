@@ -28,7 +28,8 @@
                           VerticalAlignment="Stretch"
                           GridLinesVisibility="None"
                           CanUserSortColumns="False"
-                          Width="550"> <DataGrid.Resources>
+                          Width="550">
+                    <DataGrid.Resources>
                         <Style TargetType="DataGrid">
                             <Setter Property="BorderThickness" Value="0"/>
                         </Style>
@@ -69,7 +70,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="140">  
+                        <DataGridTemplateColumn Width="140">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Valor, StringFormat='R$ {0:N2}'}" 
