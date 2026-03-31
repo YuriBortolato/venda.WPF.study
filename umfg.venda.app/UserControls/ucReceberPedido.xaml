@@ -28,23 +28,35 @@
                           VerticalAlignment="Stretch"
                           GridLinesVisibility="None"
                           CanUserSortColumns="False"
-                          Width="550">
+                          Width="550"
+                          Background="Transparent"
+                          BorderThickness="0">
                     <DataGrid.Resources>
                         <Style TargetType="DataGrid">
                             <Setter Property="BorderThickness" Value="0"/>
                         </Style>
 
+                        <Style TargetType="DataGridRow">
+                            <Setter Property="Background" Value="#F5F5F5"/> <Setter Property="Margin" Value="10,5,10,5"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect Color="Gray" Opacity="0.2" ShadowDepth="2" BlurRadius="5"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
                         <Style TargetType="DataGridCell">
                             <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="BorderBrush" Value="#ECF0F1"/>
-                            <Setter Property="Background" Value="#ECF0F1"/>
+                            <Setter Property="Background" Value="Transparent"/> 
                             <Setter Property="Foreground" Value="Black"/>
 
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="BorderBrush" Value="#E0E0E0"/>
-                                    <Setter Property="Background" Value="#E0E0E0"/>
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Setter Property="BorderBrush" Value="Transparent"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -54,7 +66,7 @@
                         <DataGridTemplateColumn Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding Imagem}" Height="130" Width="130" Stretch="Uniform" HorizontalAlignment="Center" Margin="5"/>
+                                    <Image Source="{Binding Imagem}" Height="110" Width="110" Stretch="Uniform" HorizontalAlignment="Center" Margin="10"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -63,19 +75,20 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10,0,0,0">
-                                        <TextBlock Text="{Binding Referencia}" FontWeight="SemiBold" FontSize="20" HorizontalAlignment="Left" Foreground="Gray"/>
-                                        <TextBlock Text="{Binding Descricao}" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Referencia}" FontWeight="SemiBold" FontSize="18" HorizontalAlignment="Left" Foreground="Gray"/>
+                                        <TextBlock Text="{Binding Descricao}" FontWeight="Bold" FontSize="22" HorizontalAlignment="Left" TextWrapping="Wrap"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="140">
+                        <DataGridTemplateColumn Width="140">  
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Valor, StringFormat='R$ {0:N2}'}" 
                                                FontWeight="ExtraBold" 
-                                               FontSize="24" 
+                                               FontSize="22" 
+                                               Foreground="#27ae60"
                                                VerticalAlignment="Center" 
                                                HorizontalAlignment="Right"
                                                Margin="0,0,20,0"/>
