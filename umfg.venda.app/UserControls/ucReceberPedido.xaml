@@ -16,7 +16,8 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition MinWidth="520" MaxWidth="520"/> </Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="520" MaxWidth="520"/>
+            </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
                 <DataGrid ItemsSource="{Binding Pedido.Produtos}"
@@ -36,7 +37,7 @@
                         </Style>
 
                         <Style TargetType="DataGridRow">
-                            <Setter Property="Background" Value="#F5F5F5"/> 
+                            <Setter Property="Background" Value="#F5F5F5"/>
                             <Setter Property="Margin" Value="10,5,10,5"/>
                             <Setter Property="BorderThickness" Value="1"/>
                             <Setter Property="BorderBrush" Value="#E0E0E0"/>
@@ -49,7 +50,7 @@
 
                         <Style TargetType="DataGridCell">
                             <Setter Property="BorderThickness" Value="0"/>
-                            <Setter Property="Background" Value="Transparent"/> 
+                            <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="Foreground" Value="Black"/>
 
                             <Style.Triggers>
@@ -82,7 +83,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="140">  
+                        <DataGridTemplateColumn Width="140">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Valor, StringFormat='R$ {0:N2}'}" 
@@ -103,7 +104,7 @@
                 <Border.Effect>
                     <DropShadowEffect Color="Gray" Opacity="0.15" ShadowDepth="2" BlurRadius="5"/>
                 </Border.Effect>
-                
+
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Dados de Pagamento" FontSize="28" FontWeight="Bold" Foreground="#2c3e50" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
@@ -126,10 +127,12 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <DatePicker materialDesign:HintAssist.Hint="Validade (MM/yy)"
+                        <DatePicker materialDesign:HintAssist.Hint="Validade"
+                                    materialDesign:HintAssist.HelperText="MM/yyyy"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="0"
                                     SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    Language="pt-BR"
                                     FontSize="20" FontWeight="SemiBold"/>
 
                         <TextBox materialDesign:HintAssist.Hint="Código CVV" 

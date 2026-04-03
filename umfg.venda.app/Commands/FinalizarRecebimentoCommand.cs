@@ -13,30 +13,45 @@ namespace umfg.venda.app.Commands
         public override void Execute(object? parameter)
         {
             var viewModel = parameter as ReceberPedidoViewModel;
-            if (viewModel == null) return;
+            if (viewModel == null)
+            {
+                MessageBox.Show("Erro de sistema: Não foi possível ler os dados do formulário.");
+                return;
+            }
 
             List<string> erros = new List<string>();
 
-            if (string.IsNullOrWhiteSpace(viewModel.NomeCartao))
-                erros.Add("- O Nome no Cartão é obrigatório.");
+            if (string.IsNullOrWhiteSpace(viewModel.NomeCartao) || viewModel.NomeCartao.Trim().Length < 3)
+                erros.Add("- O Nome no Cartão deve ser preenchido por completo.");
 
             if (string.IsNullOrWhiteSpace(viewModel.CVV) || !Regex.IsMatch(viewModel.CVV, @"^\d{3}$"))
                 erros.Add("- O CVV deve conter exatamente 3 dígitos numéricos.");
 
-            if (viewModel.DataValidade == null || viewModel.DataValidade.Value.Date <= DateTime.Now.Date)
-                erros.Add("- A data de validade deve ser superior à data atual.");
+            if (viewModel.DataValidade == null)
+            {
+                erros.Add("- A data de validade é obrigatória.");
+            }
+            else
+            {
+                var ultimoDiaMesValidade = new DateTime(viewModel.DataValidade.Value.Year, viewModel.DataValidade.Value.Month, DateTime.DaysInMonth(viewModel.DataValidade.Value.Year, viewModel.DataValidade.Value.Month));
+
+                if (ultimoDiaMesValidade.Date < DateTime.Now.Date)
+                {
+                    erros.Add("- A data de validade do cartão deve ser superior à data atual.");
+                }
+            }
 
             if (!ValidarCartaoLuhn(viewModel.NumeroCartao))
                 erros.Add("- O número do cartão informado é inválido.");
 
             if (erros.Any())
             {
-                MessageBox.Show("Atenção, verifique os seguintes campos:\n\n" + string.Join("\n", erros),
-                                "Campos Incorretos", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Atenção, pagamento recusado! Verifique os problemas:\n\n" + string.Join("\n", erros),
+                                "Dados Incorretos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            MessageBox.Show("Pagamento recebido com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Pagamento aprovado e finalizado com sucesso!", "Sucesso", MessageBoxButton.OK, MessageBoxImage.Information);
 
             if (Application.Current.MainWindow is MainWindow mainWindow)
             {
@@ -48,8 +63,9 @@ namespace umfg.venda.app.Commands
         {
             if (string.IsNullOrWhiteSpace(numero)) return false;
 
-            numero = numero.Replace(" ", "").Replace("-", "");
-            if (!numero.All(char.IsDigit)) return false;
+            numero = Regex.Replace(numero, "[^0-9]", "");
+
+            if (string.IsNullOrWhiteSpace(numero) || numero.Length < 13 || numero.Length > 19) return false;
 
             int soma = 0;
             bool alternar = false;
