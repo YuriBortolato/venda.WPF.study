@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using umfg.venda.app.Abstracts;
@@ -15,10 +11,17 @@ namespace umfg.venda.app.ViewModels
     internal sealed class ReceberPedidoViewModel : AbstractViewModel
     {
         private PedidoModel _pedido = new();
+        private int _tipoCartaoSelecionado = 0;
         private string _numeroCartao = string.Empty;
         private string _cvv = string.Empty;
-        private DateTime? _dataValidade = DateTime.Now;
+        private DateTime? _dataValidade = null; 
         private string _nomeCartao = string.Empty;
+
+        public int TipoCartaoSelecionado
+        {
+            get => _tipoCartaoSelecionado;
+            set => SetField(ref _tipoCartaoSelecionado, value);
+        }
 
         public string NumeroCartao
         {

@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using umfg.venda.app.Abstracts;
 using umfg.venda.app.Commands;
 using umfg.venda.app.Interfaces;
 using umfg.venda.app.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace umfg.venda.app.ViewModels
 {
     internal sealed class ListarProdutosViewModel : AbstractViewModel
     {
         private ProdutoModel _produtoSelecionado = new();
-        private ObservableCollection<ProdutoModel> _produtos = [];
+        private ObservableCollection<ProdutoModel> _produtos = new();
         private PedidoModel _pedido = new();
 
         public ProdutoModel ProdutoSelecionado
         {
             get => _produtoSelecionado;
-            set => SetField(ref _produtoSelecionado, value);
+            set
+            {
+                SetField(ref _produtoSelecionado, value);
+                RaiseCanExecuteChanged(); 
+            }
         }
 
         public ObservableCollection<ProdutoModel> Produtos
@@ -37,7 +35,11 @@ namespace umfg.venda.app.ViewModels
         public PedidoModel Pedido
         {
             get => _pedido;
-            set => SetField(ref _pedido, value);
+            set
+            {
+                SetField(ref _pedido, value);
+                RaiseCanExecuteChanged(); 
+            }
         }
 
         public AdicionarProdutoPedidoCommand Adicionar { get; private set; } = new();
@@ -57,17 +59,16 @@ namespace umfg.venda.app.ViewModels
         {
             Adicionar.RaiseCanExecuteChanged();
             Remover.RaiseCanExecuteChanged();
-            //Receber.RaiseCanExecuteChanged();
+            Receber.RaiseCanExecuteChanged(); 
         }
 
         private void CarregarProdutos()
         {
             Produtos.Clear();
-            
+
             Produtos.Add(new ProdutoModel()
             {
-                Imagem = new BitmapImage(
-                    new Uri(@"..\net8.0-windows7.0\Images\batata.png", UriKind.Relative)),
+                Imagem = new BitmapImage(new Uri(@"..\net8.0-windows7.0\Images\batata.png", UriKind.Relative)),
                 Descricao = "Batata Frita 300gr",
                 Referencia = "0001",
                 Valor = 10.90m,
@@ -75,8 +76,7 @@ namespace umfg.venda.app.ViewModels
 
             Produtos.Add(new ProdutoModel()
             {
-                Imagem = new BitmapImage(
-                    new Uri(@"..\net8.0-windows7.0\Images\combo.png", UriKind.Relative)),
+                Imagem = new BitmapImage(new Uri(@"..\net8.0-windows7.0\Images\combo.png", UriKind.Relative)),
                 Descricao = "Combo Big Mac + Batata 300gr + Refil 500ML",
                 Referencia = "0002",
                 Valor = 49.90m,
@@ -84,8 +84,7 @@ namespace umfg.venda.app.ViewModels
 
             Produtos.Add(new ProdutoModel()
             {
-                Imagem = new BitmapImage(
-                    new Uri(@"..\net8.0-windows7.0\Images\lanche.png", UriKind.Relative)),
+                Imagem = new BitmapImage(new Uri(@"..\net8.0-windows7.0\Images\lanche.png", UriKind.Relative)),
                 Descricao = "Big Mac 350gr",
                 Referencia = "0003",
                 Valor = 25.90m,
@@ -93,8 +92,7 @@ namespace umfg.venda.app.ViewModels
 
             Produtos.Add(new ProdutoModel()
             {
-                Imagem = new BitmapImage(
-                    new Uri(@"..\net8.0-windows7.0\Images\refrigerante.png", UriKind.Relative)),
+                Imagem = new BitmapImage(new Uri(@"..\net8.0-windows7.0\Images\refrigerante.png", UriKind.Relative)),
                 Descricao = "Regrigerante Refil 500ml",
                 Referencia = "0004",
                 Valor = 10.90m,
