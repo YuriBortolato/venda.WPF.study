@@ -23,38 +23,46 @@ namespace umfg.venda.app.UserControls
 
         private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
         {
-            DatePicker datepicker = sender as DatePicker;
+            var datepicker = sender as DatePicker;
             if (datepicker != null)
             {
-                Popup popup = (Popup)datepicker.Template.FindName("PART_Popup", datepicker);
+                var popup = (Popup)datepicker.Template.FindName("PART_Popup", datepicker);
                 if (popup != null && popup.Child is Calendar calendar)
                 {
-                    calendar.DisplayMode = CalendarMode.Year;
-
                     calendar.DisplayModeChanged -= Calendar_DisplayModeChanged;
                     calendar.DisplayModeChanged += Calendar_DisplayModeChanged;
+
+                    calendar.DisplayMode = CalendarMode.Year;
                 }
             }
         }
 
         private void Calendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e)
         {
-            Calendar calendar = sender as Calendar;
+            var calendar = sender as Calendar;
             if (calendar != null && calendar.DisplayMode == CalendarMode.Month)
             {
-                calendar.SelectedDate = calendar.DisplayDate;
+                calendar.DisplayModeChanged -= Calendar_DisplayModeChanged;
+
+                calendar.SelectedDate = new DateTime(calendar.DisplayDate.Year, calendar.DisplayDate.Month, 1);
+
                 dpValidade.IsDropDownOpen = false;
+
                 calendar.DisplayMode = CalendarMode.Year;
             }
         }
 
-        private void DatePicker_CalendarClosed(object sender, RoutedEventArgs e)
+        
+        private void dpValidade_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var datepicker = sender as DatePicker;
-            if (datepicker != null && datepicker.SelectedDate.HasValue)
+            if (dpValidade.SelectedDate.HasValue)
             {
-                DateTime selected = datepicker.SelectedDate.Value;
-                datepicker.SelectedDate = new DateTime(selected.Year, selected.Month, 1);
+                DateTime data = dpValidade.SelectedDate.Value;
+
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    dpValidade.Text = data.ToString("MM/yyyy");
+                }), System.Windows.Threading.DispatcherPriority.ContextIdle);
             }
         }
     }

@@ -132,10 +132,10 @@
                                     materialDesign:HintAssist.HelperText="MM/yyyy"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="0"
-                                    SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='MM/yyyy'}" 
-                                    CalendarOpened="DatePicker_CalendarOpened"
-                                    CalendarClosed="DatePicker_CalendarClosed"
+                                    SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                     Language="pt-BR"
+                                    CalendarOpened="DatePicker_CalendarOpened"
+                                    SelectedDateChanged="dpValidade_SelectedDateChanged"
                                     FontSize="20" FontWeight="SemiBold"/>
 
                         <TextBox materialDesign:HintAssist.Hint="Código CVV" 
