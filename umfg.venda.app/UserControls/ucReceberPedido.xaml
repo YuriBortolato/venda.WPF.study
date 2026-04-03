@@ -127,11 +127,14 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <DatePicker materialDesign:HintAssist.Hint="Validade"
+                        <DatePicker Name="dpValidade"
+                                    materialDesign:HintAssist.Hint="Validade"
                                     materialDesign:HintAssist.HelperText="MM/yyyy"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                     Grid.Column="0"
-                                    SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                    SelectedDate="{Binding DataValidade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='MM/yyyy'}" 
+                                    CalendarOpened="DatePicker_CalendarOpened"
+                                    CalendarClosed="DatePicker_CalendarClosed"
                                     Language="pt-BR"
                                     FontSize="20" FontWeight="SemiBold"/>
 

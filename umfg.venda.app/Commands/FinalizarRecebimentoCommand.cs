@@ -59,19 +59,21 @@ namespace umfg.venda.app.Commands
             }
         }
 
-        private bool ValidarCartaoLuhn(string numero)
+        private bool ValidarCartaoLuhn(string numeroDigitado)
         {
-            if (string.IsNullOrWhiteSpace(numero)) return false;
+            if (string.IsNullOrWhiteSpace(numeroDigitado)) return false;
 
-            numero = Regex.Replace(numero, "[^0-9]", "");
+            string numerosApenas = Regex.Replace(numeroDigitado, "[^0-9]", "");
 
-            if (string.IsNullOrWhiteSpace(numero) || numero.Length < 13 || numero.Length > 19) return false;
+            if (string.IsNullOrWhiteSpace(numerosApenas) || numerosApenas.Length < 13 || numerosApenas.Length > 19)
+                return false;
 
             int soma = 0;
             bool alternar = false;
-            for (int i = numero.Length - 1; i >= 0; i--)
+
+            for (int i = numerosApenas.Length - 1; i >= 0; i--)
             {
-                int n = int.Parse(numero[i].ToString());
+                int n = int.Parse(numerosApenas[i].ToString());
                 if (alternar)
                 {
                     n *= 2;
