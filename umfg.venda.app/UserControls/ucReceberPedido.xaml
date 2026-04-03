@@ -109,7 +109,9 @@
                     <TextBlock Text="Dados de Pagamento" FontSize="28" FontWeight="Bold" Foreground="#2c3e50" HorizontalAlignment="Center" Margin="0,0,0,30"/>
 
                     <ComboBox materialDesign:HintAssist.Hint="Tipo de Cartão" 
-                              FontSize="20" FontWeight="SemiBold" SelectedIndex="0" Margin="0,0,0,20" Padding="0,5">
+                              FontSize="20" FontWeight="SemiBold" 
+                              SelectedIndex="{Binding TipoCartaoSelecionado, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                              Margin="0,0,0,20" Padding="0,5">
                         <ComboBoxItem Content="Selecione um Cartão"/>
                         <ComboBoxItem Content="Cartão de Crédito"/>
                         <ComboBoxItem Content="Cartão de Débito"/>
@@ -136,6 +138,7 @@
                                     Language="pt-BR"
                                     CalendarOpened="DatePicker_CalendarOpened"
                                     SelectedDateChanged="dpValidade_SelectedDateChanged"
+                                    Loaded="dpValidade_Loaded"
                                     FontSize="20" FontWeight="SemiBold"/>
 
                         <TextBox materialDesign:HintAssist.Hint="Código CVV" 

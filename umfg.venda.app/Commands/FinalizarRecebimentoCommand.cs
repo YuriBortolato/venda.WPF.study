@@ -21,6 +21,9 @@ namespace umfg.venda.app.Commands
 
             List<string> erros = new List<string>();
 
+            if (viewModel.TipoCartaoSelecionado == 0)
+                erros.Add("- Selecione a modalidade do cartão (Crédito ou Débito).");
+
             if (string.IsNullOrWhiteSpace(viewModel.NomeCartao) || viewModel.NomeCartao.Trim().Length < 3)
                 erros.Add("- O Nome no Cartão deve ser preenchido por completo.");
 
@@ -82,6 +85,7 @@ namespace umfg.venda.app.Commands
                 soma += n;
                 alternar = !alternar;
             }
+
             return (soma % 10 == 0);
         }
     }

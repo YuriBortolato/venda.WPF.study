@@ -43,26 +43,29 @@ namespace umfg.venda.app.UserControls
             if (calendar != null && calendar.DisplayMode == CalendarMode.Month)
             {
                 calendar.DisplayModeChanged -= Calendar_DisplayModeChanged;
-
                 calendar.SelectedDate = new DateTime(calendar.DisplayDate.Year, calendar.DisplayDate.Month, 1);
-
                 dpValidade.IsDropDownOpen = false;
-
                 calendar.DisplayMode = CalendarMode.Year;
             }
         }
 
-        
         private void dpValidade_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dpValidade.SelectedDate.HasValue)
             {
                 DateTime data = dpValidade.SelectedDate.Value;
-
                 Dispatcher.BeginInvoke(new Action(() =>
                 {
                     dpValidade.Text = data.ToString("MM/yyyy");
                 }), System.Windows.Threading.DispatcherPriority.ContextIdle);
+            }
+        }
+
+        private void dpValidade_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (dpValidade.SelectedDate.HasValue)
+            {
+                dpValidade.Text = dpValidade.SelectedDate.Value.ToString("MM/yyyy");
             }
         }
     }
