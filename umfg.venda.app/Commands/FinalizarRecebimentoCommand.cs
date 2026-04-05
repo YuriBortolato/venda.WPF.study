@@ -39,12 +39,12 @@ namespace umfg.venda.app.Commands
             {
                 if (!Regex.IsMatch(viewModel.DataValidade, @"^(0[1-9]|1[0-2])\/\d{2,4}$"))
                 {
-                    erros.Add("- Digite a validade no formato correto (ex: 12/26).");
+                    erros.Add("- Digite a validade no formato correto de Mês e Ano (ex: 12/2026 no padrão MM/yyyy).");
                 }
                 else
                 {
                     DateTime dataValidadeCartao;
-                    string formato = viewModel.DataValidade.Length == 5 ? "MM/yy" : "MM/yyyy";
+                    string formato = viewModel.DataValidade.Length <= 5 ? "MM/yy" : "MM/yyyy";
 
                     if (DateTime.TryParseExact(viewModel.DataValidade, formato, CultureInfo.InvariantCulture, DateTimeStyles.None, out dataValidadeCartao))
                     {
